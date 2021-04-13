@@ -1,0 +1,75 @@
+技术栈
+  vue vue-router vuex
+脚手架
+  vue-cli
+
+请求库 axios
+
+后端服务 nodejs
+
+组件库：ElementUI
+
+https://element.eleme.cn/#/zh-CN/component/installation
+npm i element-ui -S
+
+-----------------------
+官网：https://cli.vuejs.org/zh/guide/installation.html
+
+npm install -g @vue/cli
+
+vue --version
+
+vue create <project-name>
+
+
+vue-cli2 webpack 配置 修改
+vue-cli3 webpack配置给隐藏了 通过服务来启动webpack配置，升级服务
+
+单页应用 index.html
+
+Proxy error: Could not proxy request /banner from localhost:8081 to  http://127.0.0.1:7001 (ECONNREFUSED).
+
+启动后端的服务
+  拿到代码目录，npm run dev 
+  目标地址：http://127.0.0.1:7001
+
+前端的服务是 http://localhost:8081
+前端请求的地址：http://localhost:8081/api/banner
+
+前端请求 -> http://127.0.0.1:7001 跨域
+
+后端不存在跨域 http://localhost:8081 -> http://127.0.0.1:7001 不跨域
+
+前端请求 http://localhost:8081 不跨域
+
+前端请求 -> http://localhost:8081(代理) -> http://127.0.0.1:7001
+
+跨域请求
+  http https  域名 端口 有一个不一样，就产生了跨域
+
+  http://www.baidu.com:80 
+  http://www.baidu.com:8080 
+  https://www.baidu.com 
+  http://www.taobao.com
+
+
+首页
+
+登录注册功能
+  
+
+  beforeEach
+    有些路由是需要登录的，判断登录状态
+      没有登录，跳转到登录页
+      登录，直接进入
+    不需要登录，直接进入
+
+登录还是没登录
+  login页面，用户名，密码，发送给后端，返回结果
+    成功
+      
+      之前传统的做法，返回session放在cookie中，当访问页面或者发送请求，浏览器会把cookie发送给后端。
+      现在做饭，后端返回一个token，前端自己决定把token存在cookie还是localStorge
+      每次请求，都要把token带给后端，后端进行验证。
+        放在请求header，约定key值 authorization
+    不成功
